@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AutomobileShowroomModelStoreContainer" CdmEntityContainer="AutomobileShowroomEntities1">
+    <EntitySetMapping Name="Accessories">
+      <EntityTypeMapping TypeName="AutomobileShowroomModel.Accessory">
+        <MappingFragment StoreEntitySet="Accessory">
+          <ScalarProperty Name="AccessoryId" ColumnName="AccessoryId" />
+          <ScalarProperty Name="AccessoryName" ColumnName="AccessoryName" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="AutomobileShowroomModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Customerid" ColumnName="Customerid" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+          <ScalarProperty Name="Customercontact" ColumnName="Customercontact" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="AutomobileShowroomModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Records">
+      <EntityTypeMapping TypeName="AutomobileShowroomModel.Record">
+        <MappingFragment StoreEntitySet="Records">
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="BillDate" ColumnName="BillDate" />
+          <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="IsLoan" ColumnName="IsLoan" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehicles">
+      <EntityTypeMapping TypeName="AutomobileShowroomModel.Vehicle">
+        <MappingFragment StoreEntitySet="Vehicle">
+          <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+          <ScalarProperty Name="VehicleType" ColumnName="VehicleType" />
+          <ScalarProperty Name="VehicleBrand" ColumnName="VehicleBrand" />
+          <ScalarProperty Name="VehicleModel" ColumnName="VehicleModel" />
+          <ScalarProperty Name="VehiclePrice" ColumnName="VehiclePrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

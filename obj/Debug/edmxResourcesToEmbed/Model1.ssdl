@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AutomobileShowroomModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Accessory">
+    <Key>
+      <PropertyRef Name="AccessoryId" />
+    </Key>
+    <Property Name="AccessoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccessoryName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Customerid" />
+    </Key>
+    <Property Name="Customerid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="100" />
+    <Property Name="CustomerAddress" Type="varchar" MaxLength="200" />
+    <Property Name="Customercontact" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeName" Type="varchar" MaxLength="100" />
+    <Property Name="Position" Type="varchar" MaxLength="50" />
+    <Property Name="Phone" Type="varchar" MaxLength="15" />
+    <Property Name="JoinDate" Type="date" />
+    <Property Name="Salary" Type="float" />
+  </EntityType>
+  <EntityType Name="Records">
+    <Key>
+      <PropertyRef Name="InvoiceNo" />
+    </Key>
+    <Property Name="InvoiceNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillDate" Type="date" />
+    <Property Name="VehicleId" Type="varchar" MaxLength="100" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="IsLoan" Type="varchar" MaxLength="10" />
+    <Property Name="TotalAmount" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vehicle">
+    <Key>
+      <PropertyRef Name="VehicleId" />
+    </Key>
+    <Property Name="VehicleId" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="VehicleType" Type="varchar" MaxLength="100" />
+    <Property Name="VehicleBrand" Type="varchar" MaxLength="100" />
+    <Property Name="VehicleModel" Type="varchar" MaxLength="100" />
+    <Property Name="VehiclePrice" Type="float" />
+  </EntityType>
+  <Association Name="FK__Records__Custome__276EDEB3">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Records" Type="Self.Records" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Customerid" />
+      </Principal>
+      <Dependent Role="Records">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Records__Employe__286302EC">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Records" Type="Self.Records" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="Records">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Records__Vehicle__267ABA7A">
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="0..1" />
+    <End Role="Records" Type="Self.Records" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle">
+        <PropertyRef Name="VehicleId" />
+      </Principal>
+      <Dependent Role="Records">
+        <PropertyRef Name="VehicleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AutomobileShowroomModelStoreContainer">
+    <EntitySet Name="Accessory" EntityType="Self.Accessory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Records" EntityType="Self.Records" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehicle" EntityType="Self.Vehicle" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Records__Custome__276EDEB3" Association="Self.FK__Records__Custome__276EDEB3">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Records" EntitySet="Records" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Records__Employe__286302EC" Association="Self.FK__Records__Employe__286302EC">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Records" EntitySet="Records" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Records__Vehicle__267ABA7A" Association="Self.FK__Records__Vehicle__267ABA7A">
+      <End Role="Vehicle" EntitySet="Vehicle" />
+      <End Role="Records" EntitySet="Records" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

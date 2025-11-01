@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cf39ff16593d404f83290b78bb6fa681" Name="Diagram1">
+        <EntityTypeShape EntityType="AutomobileShowroomModel.Accessory" Width="1.5" PointX="2.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutomobileShowroomModel.Customer" Width="1.5" PointX="5.875" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutomobileShowroomModel.Employee" Width="1.5" PointX="8.875" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutomobileShowroomModel.Record" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutomobileShowroomModel.Vehicle" Width="1.5" PointX="4.125" PointY="2" IsExpanded="true" />
+        <AssociationConnector Association="AutomobileShowroomModel.FK__Records__Custome__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="AutomobileShowroomModel.FK__Records__Employe__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="AutomobileShowroomModel.FK__Records__Vehicle__267ABA7A" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

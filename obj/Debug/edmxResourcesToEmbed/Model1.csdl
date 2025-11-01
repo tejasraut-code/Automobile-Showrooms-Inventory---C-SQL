@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AutomobileShowroomModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Accessory">
+    <Key>
+      <PropertyRef Name="AccessoryId" />
+    </Key>
+    <Property Name="AccessoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccessoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Customerid" />
+    </Key>
+    <Property Name="Customerid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Customercontact" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Records" Relationship="Self.FK__Records__Custome__276EDEB3" FromRole="Customer" ToRole="Records" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="JoinDate" Type="DateTime" Precision="0" />
+    <Property Name="Salary" Type="Double" />
+    <NavigationProperty Name="Records" Relationship="Self.FK__Records__Employe__286302EC" FromRole="Employee" ToRole="Records" />
+  </EntityType>
+  <EntityType Name="Record">
+    <Key>
+      <PropertyRef Name="InvoiceNo" />
+    </Key>
+    <Property Name="InvoiceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillDate" Type="DateTime" Precision="0" />
+    <Property Name="VehicleId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="IsLoan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TotalAmount" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Records__Custome__276EDEB3" FromRole="Records" ToRole="Customer" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Records__Employe__286302EC" FromRole="Records" ToRole="Employee" />
+    <NavigationProperty Name="Vehicle" Relationship="Self.FK__Records__Vehicle__267ABA7A" FromRole="Records" ToRole="Vehicle" />
+  </EntityType>
+  <EntityType Name="Vehicle">
+    <Key>
+      <PropertyRef Name="VehicleId" />
+    </Key>
+    <Property Name="VehicleId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VehicleType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="VehicleBrand" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="VehicleModel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="VehiclePrice" Type="Double" />
+    <NavigationProperty Name="Records" Relationship="Self.FK__Records__Vehicle__267ABA7A" FromRole="Vehicle" ToRole="Records" />
+  </EntityType>
+  <Association Name="FK__Records__Custome__276EDEB3">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Records" Type="Self.Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Customerid" />
+      </Principal>
+      <Dependent Role="Records">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Records__Employe__286302EC">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Records" Type="Self.Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="Records">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Records__Vehicle__267ABA7A">
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="0..1" />
+    <End Role="Records" Type="Self.Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle">
+        <PropertyRef Name="VehicleId" />
+      </Principal>
+      <Dependent Role="Records">
+        <PropertyRef Name="VehicleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AutomobileShowroomEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accessories" EntityType="Self.Accessory" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Records" EntityType="Self.Record" />
+    <EntitySet Name="Vehicles" EntityType="Self.Vehicle" />
+    <AssociationSet Name="FK__Records__Custome__276EDEB3" Association="Self.FK__Records__Custome__276EDEB3">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Records" EntitySet="Records" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Records__Employe__286302EC" Association="Self.FK__Records__Employe__286302EC">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Records" EntitySet="Records" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Records__Vehicle__267ABA7A" Association="Self.FK__Records__Vehicle__267ABA7A">
+      <End Role="Vehicle" EntitySet="Vehicles" />
+      <End Role="Records" EntitySet="Records" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
